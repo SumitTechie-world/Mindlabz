@@ -1,0 +1,96 @@
+<section class="login-wrapper">
+    <div class="login-lft" style="
+            width: -webkit-fill-available;
+        ">
+        <div class="login-text-box">
+            <p>A comprehensive guide to</p>
+            <h1>Hotel Management Software</h1>
+            <p>Find the right property management system for your hotel</p>
+        </div>
+    </div>
+    <div class="login-rht">
+        <img class="login-logo" src="/assets/images/logo.svg" alt="HoteLogix">
+        <h4>Select a role for login </h4>
+
+        <mat-tab-group>
+            <mat-tab label="Hotel">
+                <ng-template mat-tab-label>
+                    <span class="icon-hotel"></span> Hotel
+                </ng-template>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <mat-label class="d-block">User Name</mat-label>
+                            <mat-form-field class="example-full-width">
+                                <input type="text" matInput placeholder="" formControlName="username" [ngClass]="{
+                                'is-invalid':
+                                    showFieldError(f['username']) &&
+                                    f['username'].errors
+                            }">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <mat-label class="d-block">Password</mat-label>
+                            <mat-form-field class="example-full-width">
+                                <input type="password" matInput placeholder="" formControlName="password" [ngClass]="{
+                            'is-invalid':
+                                showFieldError(f['password']) &&
+                                f['password'].errors
+                        }">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 d-flex justify-content-between align-items-center" style="
+                                display: grid;
+                            ">
+                            <a mat-button (click)="goToForgotPassord()">Forgot Password?</a>
+                            <button mat-flat-button color="primary" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="need-assistance">
+                    <p>Need assistance? Contact our support at </p>
+                    <h2>1800-419-4247</h2>
+                </div>
+            </mat-tab>
+            <mat-tab label="Admin">
+                <ng-template mat-tab-label>
+                    <span class="icon-admin"></span> Admin
+                </ng-template>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-12">
+                            <mat-label class="d-block">User Name</mat-label>
+                            <mat-form-field class="example-full-width">
+                                <input type="text" matInput placeholder="" formControlName="username" [ngClass]="{
+                                'is-invalid':
+                                    showFieldError(f['username']) &&
+                                    f['username'].errors
+                            }">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <mat-label class="d-block">Password</mat-label>
+                            <mat-form-field class="example-full-width">
+                                <input type="password" matInput placeholder="" formControlName="password" [ngClass]="{
+                                'is-invalid':
+                                    showFieldError(f['password']) &&
+                                    f['password'].errors
+                            }">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 d-flex justify-content-between align-items-center">
+                            <a mat-button (click)="goToForgotPassord()">Forgot Password?</a>
+                            <button mat-flat-button color="primary" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="need-assistance">
+                    <p>Need assistance? Contact our support at </p>
+                    <h2>1800-419-4247</h2>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</section>

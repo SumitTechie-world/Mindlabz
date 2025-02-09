@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Add New Event</h2>
+<mat-dialog-content>
+    <form [formGroup]="addEventForm">
+        <div class="row">
+            <div class="col-12">
+                <mat-label class="d-block">Event Name</mat-label>
+                <mat-form-field class="example-full-width"> 
+                    <input type="text" matInput placeholder="Enter Event Name" formControlName="name">
+                </mat-form-field>
+            </div>
+            <div class="col-12">
+                <mat-label class="d-block">Template</mat-label>
+                <mat-form-field class="example-full-width"> 
+                    <mat-select formControlName="tempId">
+                        <mat-option value="{{mTemplate?.id}}" *ngFor="let mTemplate of allTemplateArr" >{{mTemplate?.name}}</mat-option> 
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div> 
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="addEvent()" routerLinkActive="router-link-active"  color="primary" mat-flat-button mat-dialog-close>Add Event</button>
+</mat-dialog-actions>

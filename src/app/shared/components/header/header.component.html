@@ -1,0 +1,39 @@
+<header id="header" style="padding: 1%;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <img class="logo" src="/assets/images/logo.svg" alt="Hotelogix" title="Hotelogix">
+                <div class="logo-right" style="text-align: -webkit-right;"> 
+                    <div class="notify" style="display: contents;"> 
+                        <button mat-icon-button [matMenuTriggerFor]="notificationDropdown">
+                            <img src="/assets/images/notifiction-icon.svg" alt="Notifiction">
+                        </button>
+                    </div>
+                    <mat-menu class="notification-list mat-custom-menu" #notificationDropdown="matMenu">
+                        <ul>
+                            <li *ngFor="let mNoti of notificationsArr">{{mNoti?.message}} 
+                                <small>{{mNoti?.createdDate |date}}</small>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-8"></div>
+                            <!-- <div class="col-4"><a > View All</a></div> -->
+                        </div>
+                    </mat-menu>
+
+                    <button mat-icon-button [matMenuTriggerFor]="userDropdown">
+                        <span class="user-name">SM</span>
+                    </button>
+                    <mat-menu #userDropdown="matMenu" class="mat-custom-menu">
+                        <button mat-menu-item>
+                            <span>Manage Profile</span>
+                          </button>
+                          <button mat-menu-item (click)="logout()">
+                            <span>Logout</span>
+                          </button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

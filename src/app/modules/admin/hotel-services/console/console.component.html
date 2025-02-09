@@ -1,0 +1,41 @@
+<div class="main-container">
+    <div class="container">
+        <div class="title-section">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <h3 class="link" [routerLink]="['/admin/hotel-services']" routerLinkActive="router-link-active" >
+                        Console
+                    </h3> 
+                </div>
+                <div class="col-12 col-md-8" style="text-align-last: right;">
+                    <div class="float-end">
+                        <h5>
+                            {{hotelDetails?.hotelName}}
+                        </h5>
+                        <p>Hotel ID: {{hotelDetails?.hotelId}}</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mat-table-wrapper">
+            <ng-container *ngIf="serviceDetails?.serviceType === '1' ">
+                <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+                    <mat-tab label="Hotel To Middleware"> 
+                        <ng-container *ngIf="dataSource && dataSource.length > 0">
+                            <app-hotel-middleware [dataList]="dataSource"  [dataSourceCount]="dataCount"></app-hotel-middleware>
+                        </ng-container>
+                    </mat-tab>
+                    <mat-tab label="Middleware To Vendor">
+                        <ng-container *ngIf="dataSource">
+                            <app-middleware-vendor></app-middleware-vendor>    
+                        </ng-container>
+                    </mat-tab> 
+                </mat-tab-group>
+            </ng-container>
+
+            <ng-container *ngIf="serviceDetails?.serviceType === '2' ">
+                <app-hotel-middleware [dataList]="dataSource"></app-hotel-middleware>
+            </ng-container>
+        </div>
+    </div>
+</div>

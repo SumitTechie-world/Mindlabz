@@ -1,0 +1,61 @@
+<div class="mat-table-wrapper">
+    <div class="mat-search-wrapper mat-search-wrapper-with-btn">
+        <div class="row">
+          <div class="col-12">
+            <div class="float-end">
+                <!-- <mat-form-field class="table-search-field "> 
+                    <input type="text" matInput placeholder="Search">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field> -->
+                <!-- <button (click)="openDialog()" class="ms-4" mat-flat-button color="primary">Add Event</button> -->
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="mar-table-responsive">
+      <table mat-table [dataSource]="dataSource">
+              
+          <!-- Template Column -->
+          <ng-container matColumnDef="template">
+            <th width="10%" mat-header-cell *matHeaderCellDef> Event Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.template}} </td>
+          </ng-container>
+
+          <!-- Event Name Column -->
+          <ng-container matColumnDef="eventName">
+            <th width="50%" mat-header-cell *matHeaderCellDef> Event Name </th>
+            <td mat-cell class="cursor-pointer" *matCellDef="let element"> 
+              {{element.eventName}}
+              </td>
+          </ng-container>
+           
+        
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">  
+              <span class="text-success">{{element.status}}</span>
+            </td>
+          </ng-container>
+
+          <!-- Date Column -->
+          <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> Date </th>
+              <td mat-cell *matCellDef="let element">Sep 3, 2023 </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row
+              (click)="clickedRows.add(row)"
+              [class.demo-row-is-clicked]="clickedRows.has(row)"
+              *matRowDef="let row; columns: displayedColumns;">
+          </tr>
+      </table>
+    </div>  
+    <!-- <mat-paginator [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page">
+    </mat-paginator> -->
+
+</div>    

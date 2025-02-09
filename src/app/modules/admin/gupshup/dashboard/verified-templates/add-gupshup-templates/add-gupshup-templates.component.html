@@ -1,0 +1,84 @@
+<h2 mat-dialog-title>
+    Add New Templates
+    <button mat-icon-button mat-dialog-close style="position: absolute; top: 8px; right: 8px;">
+        <mat-icon>close</mat-icon>
+    </button>
+</h2>
+
+<mat-dialog-content>
+    <div class="row">
+        <div class="col-6">
+            <p class="info-txt">Hotel Name <span>{{hotelDetails?.hotelName}}</span></p>
+        </div>
+        <div class="col-6">
+            <p class="info-txt">Hotel ID <span>{{hotelDetails?.hotelId}}</span></p>
+        </div>
+
+    </div>
+    <form [formGroup]="addTemplateForm">
+        <div class="row">
+            <!-- Name Field -->
+            <div class="col-6 col-md-6">
+                <mat-label class="d-block">Name</mat-label>
+                <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Name Of the template" formControlName="name">
+                </mat-form-field>
+            </div>
+
+            <!-- Event Field -->
+            <div class="col-6 col-md-6">
+                <mat-label class="d-block">Event</mat-label>
+                <mat-form-field class="example-full-width">
+                    <mat-select formControlName="eventId" (selectionChange)="onVendorChange($event)">
+                        <mat-option value="{{mEvent?.id}}" *ngFor="let mEvent of allEventsArr">
+                            {{mEvent?.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Template ID Field -->
+            <div class="col-6 col-md-6">
+                <mat-label class="d-block">TemplateId</mat-label>
+                <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Template Id" formControlName="tempId">
+                </mat-form-field>
+            </div>
+
+            <!-- Consumer Secret or Placeholder Field -->
+            <div class="col-6 col-md-6">
+                <mat-label class="d-block">Consumer Secret</mat-label>
+                <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Enter consumer secret" formControlName="consumerSecret">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Counter ID -->
+            <div class="col-6 col-md-6">
+                <mat-label class="d-block">Counter ID</mat-label>
+                <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Enter counter ID" formControlName="counterId">
+                </mat-form-field>
+            </div>
+
+            <!-- Web Link -->
+            <div class="col-6 col-md-6" *ngIf="selectedVendorEntity?.serviceType === '2'">
+                <mat-label class="d-block">Web Link</mat-label>
+                <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Enter Web Link" formControlName="webLink">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button (click)="createService()" routerLinkActive="router-link-active" color="primary" mat-flat-button
+        mat-dialog-close>
+        Add Template
+    </button>
+</mat-dialog-actions>

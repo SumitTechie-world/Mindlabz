@@ -1,0 +1,334 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('./assets/css/utilities.scss');
+
+$bg-primary: #0156AD;
+$bg-light: #F0F6FD;
+$bg-white: #ffffff;
+$bg-black: #000000;
+$bg-dark: #23282D;
+$bg-danger:  #F21313;
+$bg-success:  #0DB87A;
+$text-primary:  #0156AD;
+$text-secondary:  #0156AD;
+$text-black:  #000000;
+$text-dark:  #484D53;
+$text-light:  #787878;
+$text-white:  #ffffff;
+$text-danger:  #F21313;
+$text-success:  #0DB87A;
+$text-body:  #0156AD;
+$label-color: #626262;
+$input-border-color: #D6D6D6;
+$border-color: #D6D6D6;
+$border-light-blue-color: #CAD5E0;
+$border-mat-table: #DBE2EA;
+$bg-main-container: #F9FCFF;
+
+
+.mat-mdc-unelevated-button.mat-primary {
+    --mdc-filled-button-container-color: #0156AD;
+    --mdc-filled-button-label-text-color: #fff;
+    --mat-filled-button-state-layer-color: #fff;
+    --mat-filled-button-ripple-color: rgba(255, 255, 255, 0.1);
+}
+
+$black-87-opacity: rgba(black, 0.87);
+$white-87-opacity: rgba(white, 0.87);
+$mat-success: (
+  50: #e8f5e9,
+  100: #c8e6c9,
+  200: #a5d6a7,
+  300: #81c784,
+  400: #66bb6a,
+  500: #4caf50,
+  600: #43a047,
+  700: #388e3c,
+  800: #2e7d32,
+  900: #0DB87A,
+  A100: #b9f6ca,
+  A200: #69f0ae,
+  A400: #00e676,
+  A700: #00c853,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: $black-87-opacity,
+  )
+);
+
+
+// .mat-success {
+//     color: #fff !important;
+//     background-color: #28a745 !important;
+//   }
+//   .mat-success[disabled] {
+//     background-color: rgba(0, 0, 0, 0.12) !important;
+//   }
+
+
+:root{
+    html, body { padding: 0; margin: 0; height: 100%; -webkit-text-size-adjust:100%}
+    body { font-size: 14px; line-height: 18px; font-weight: 400; font-family: "Inter", sans-serif !important; color: $text-black; }
+    .cursor-pointer { cursor: pointer }
+
+    .text-success{ color: $text-success !important; }
+    .text-underline{ text-decoration: underline; }
+
+
+    // HEADING CSS START
+    // =======================================
+    h1{ font: 700 64px/77.45px "Inter", sans-serif; letter-spacing: -3%; color: $text-dark; background-color: inherit; }
+    h2{ font: 700 24px/28px "Inter", sans-serif; color: $text-dark; background-color: transparent; padding: 0 0 13px; margin: 0;}
+    h3{ font: 600 20px/28px "Inter", sans-serif; color: $text-dark; background-color: transparent; padding: 0 0 13px; margin: 0; 
+        &.link{ background: url('/assets/images/arrow-left.svg') no-repeat left 6px; padding-left: 30px; font-weight: 500; cursor: pointer;
+            + p{ padding-left: 30px; color: $text-dark;}
+        }
+    }
+    h4{ font: 500 18px/28px "Inter", sans-serif; color: $text-dark; background-color: transparent; padding: 0 0 13px; margin: 0;}
+    h5{ font: 500 16px/26px "Inter", sans-serif; color: $text-dark; background-color: transparent; padding: 0 0 13px; margin: 0; }
+
+    // LOGIN PAGE CSS START
+    // =======================================
+    .login-wrapper{ width: 100%; display: flex;
+        .login-lft{ width: calc(100% - 656px); min-height: 100vh; float: left; background: $bg-primary; display: flex; align-items: center; justify-content: center;
+            .login-text-box{ max-width: 659px;
+                p{ font-size: 30px; line-height: 36px; font-weight: 400; padding: 0; margin: 0 0 15px; color: $text-white; }
+                h1{ padding: 0; margin: 0 0 26px; color: $text-white; }
+            }
+        }
+        .login-rht{ width: 656px; padding: 90px 145px; min-height: 100vh; height: 100%; float: right; background: $bg-white; 
+            .login-logo{ margin: 0 0 26px }
+            .icon-hotel{ width: 40px; height: 40px; margin-bottom: 10px; display: block; background: url('/assets/images/hotel-icon-default.svg') no-repeat center top; }
+            .icon-admin{ width: 40px; height: 40px; margin-bottom: 10px; display: block; background: url('/assets/images/admin-icon-default.svg') no-repeat center top; }
+            .mat-mdc-tab { max-width: 108px; height: 108px; overflow: hidden; margin-right: 30px; border: 2px solid #CACACA; border-radius: 16px;
+                &.mdc-tab--active{ border-color: #0156AD; }
+                .mdc-tab__text-label{ display: flex; flex-direction: column; font-size: 16px; line-height: 19.36px; font-family: "Inter", sans-serif; letter-spacing: inherit; color: $text-light; }  
+                &.mdc-tab--active{ 
+                    .mdc-tab__text-label{ color: $text-primary; } 
+                    .icon-hotel{ width: 40px; height: 40px; margin-bottom: 10px; display: block; background: url('/assets/images/hotel-icon-active.svg') no-repeat center top; }
+                    .icon-admin{ width: 40px; height: 40px; margin-bottom: 10px; display: block; background: url('/assets/images/admin-icon-active.svg') no-repeat center top; }
+                }
+                .mdc-tab-indicator{ display: none; }
+            }
+            .mat-mdc-tab-body-wrapper{ padding-top: 40px; }
+            .need-assistance{ padding-top: 64px; }
+        }
+    }
+    @media(max-width:1366px){
+        .login-wrapper{ width: 100%; 
+            .login-lft{ width: calc(100% - 540px); }
+            .login-rht{ width: 540px; padding: 75px 100px; }
+        }
+    }
+    @media(max-width:1199px){
+        .login-wrapper{ width: 100%; 
+            .login-lft{ width: calc(100% - 540px); 
+                .login-text-box{ padding-left: 60px; padding-right: 60px;
+                    p{ font-size: 24px; line-height: 36px; }
+                    h1{ font-size: 54px; line-height: 64px; margin: 0 0 26px }
+                }
+            }
+            .login-rht{ width: 540px; padding: 75px 90px; }
+        }
+    }
+    @media(max-width:1024px){
+        .login-wrapper{  
+            .login-lft{ width: calc(100% - 480px); 
+                .login-text-box{ padding-left: 60px; padding-right: 60px;
+                    p{ font-size: 18px; line-height: 28px; }
+                    h1{ font-size: 44px; line-height: 54px }
+                }
+            }
+            .login-rht{ width: 480px; padding: 60px 75px; 
+                .need-assistance{ padding-top:25px; }
+            }
+        }
+    }
+    @media(max-width:991px){
+        .login-wrapper{ display: block; 
+            .login-lft{ width: 100%; min-height: auto;
+                .login-text-box{ padding:110px 75px;  
+                    p{ font-size: 18px; line-height: 28px; }
+                    h1{ font-size: 44px; line-height: 54px }
+                }
+            }
+            .login-rht{ width: auto; max-width: 659px; min-height: auto; display: block; margin: 0 auto; padding: 110px 75px; float: none; overflow: hidden;
+                .need-assistance{ padding-top:25px; }
+            }
+        }
+    }
+    @media(max-width:380px){
+        .login-wrapper{  
+            .login-lft{  
+                .login-text-box{ padding:90px 30px 70px;  
+                    p{ font-size: 18px; line-height: 28px; }
+                    h1{ font-size: 32px; line-height: 44px }
+                }
+            }
+            .login-rht{ padding:90px 30px; 
+                .mat-mdc-tab{ width: 100px; height: 100px; margin-right: 10px; }
+            }
+        }
+    }
+}
+
+
+
+
+// FORM CSS START
+// ==============================
+button.mdc-button{ height: 48px; border-radius: 10px; font-size: 13px; font-weight: 700; letter-spacing: inherit; text-transform: uppercase; 
+    img{ margin-right: 8px; }
+}
+a.mat-mdc-button{ padding: 0 !important; min-width: auto; font-size: 13px; font-weight: 700; letter-spacing: inherit; text-transform: uppercase }
+
+mat-label{ font-size: 13px; line-height: 15.73px; font-family: "Inter", sans-serif; color: $label-color; padding-bottom: 8px; }
+.mat-mdc-form-field {  margin-bottom: 20px;
+    &.example-full-width{ width: 100%; }
+    .mat-mdc-text-field-wrapper{ height: 48px; border: 1px solid $input-border-color; border-radius: 10px; background-color: $bg-white !important;}
+    &.mat-textarea{ min-height: 120px;  }
+}
+.mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix{padding: 0 !important; 
+    .mat-mdc-form-field-input-control{ height: 100% !important; font-size: 16px; font-weight: 500; color: $text-black; min-height: 46px !important; height: 46px !important; }
+    .mat-mdc-form-field-textarea-control{ min-height: 92px !important; font-size: 16px; font-weight: 500; color: $text-black; }
+}
+.mat-mdc-select{ height: 48px;   
+    .mat-mdc-select-trigger{ height: 48px; 
+        .mat-mdc-select-value{ font-size: 16px !important; font-weight: 500; color: $text-dark;}
+    }
+}
+@media(max-width:1024px){
+    .mat-mdc-form-field{ margin-bottom: 5px;}
+}
+
+
+
+// HEADER CSS START
+// ==============================
+header#header{
+    width: 100%; height: 63px; background: $bg-dark; display: flex; align-items: center; justify-content: space-between;
+    .logo{ height: 43px; }
+    .user-name{ width: 32px; height: 32px; border-radius: 100%; background: $bg-primary; color: $text-white; text-transform: uppercase; text-align: center; font-size: 12px; line-height: 32px; display: block; }
+}
+.notification-list{ width: 280px; padding: 10px 15px; 
+    ul{ list-style: none; padding: 0; margin: 0;
+        li{ padding: 5px 0; margin: 0; border-bottom: 1px solid $border-color; font-size: 14px;
+            &:last-child{ border-bottom: 0px; }
+        }
+    }
+}
+
+
+// MAIN CONTAINER CSS START
+// ==============================
+.main-container{ min-height: calc(100vh - 63px); padding: 40px 0; background: $bg-main-container;}
+.title-section{ border-bottom: 1px solid $border-light-blue-color; padding-bottom: 10px; margin-bottom: 18px;
+    h5{
+        + p{ color: $text-dark;}
+    }
+}
+
+// MAT TABLE CSS START
+// ==============================
+.table-search-field{ min-width: 368px !important; max-width: 368px; }
+.mat-search-wrapper{ 
+    .mat-mdc-form-field{margin-bottom: 0px; }
+}
+.mat-table-wrapper{ overflow: hidden; border-radius: 10px; border: 1px solid $border-mat-table !important;  box-shadow: 0px 4px 4px 0px #F3F7FA;
+    .mar-table-responsive{ overflow-x: auto; }
+}
+.mat-mdc-table{ background: $bg-white; border-radius: 10px;}
+.mat-mdc-paginator{ border-top: 1px solid $border-mat-table; padding-top: 15px; padding-bottom: 15px; 
+    .mat-mdc-paginator-page-size{ align-items: center }
+    .mat-mdc-text-field-wrapper{ align-items: center; line-height: 46px; }
+}
+.mat-mdc-header-cell{ font-size: 13px !important; color: $text-black; }
+.mdc-data-table__cell{ font-size: 14px !important; color: $text-dark; }
+.mat-mdc-paginator-page-size-label, .mat-mdc-paginator-range-label, .mat-mdc-select-value{ font-size: 14px !important; color: $text-dark;}
+
+tr.mat-mdc-row:hover, tr.mat-mdc-row:active { background: $bg-light; }
+tr.mat-mdc-row.demo-row-is-clicked { background: $bg-light;  position: relative;
+    &:after{ width: 4px; height: 100%; background-color: $bg-primary; display: block; position: absolute; top: 0; left: 0; content: ''; }
+}
+.mat-mdc-menu-panel{
+    &.info-menu-wrapper{ min-width: 502px; max-width: 502px;  border: 1px solid #3559D9;  padding:12px 24px; border-radius: 10px; box-shadow: 0px 4px 10px 0px #0000000D; background:#F8F9FF;
+        .info-wrapper{ width: 100%; 
+            ol{ padding: 0; margin: 0 0 0 16px;
+                li{ padding: 0; margin: 0; font-size: 13px; font-weight:500; font-family: "Inter", sans-serif !important; letter-spacing: 0px;
+                    span{ font-weight: 700;}
+                }
+            }
+        }
+    }
+    @media(max-width:800px){
+        &.info-menu-wrapper{ min-width: auto; max-width: 300px;}
+    }
+}
+.td-link{ cursor: pointer; text-decoration: underline; }
+.mat-mdc-cell{ font-family: "Inter", sans-serif; letter-spacing: 0px !important; }
+@media(max-width:768px){
+    .mat-search-wrapper{
+        &.mat-search-wrapper-with-btn{  padding-bottom: 15px !important;
+            .table-search-field{ min-width: 100% !important; max-width: 100%; }
+            button{float: right; }
+        }
+    } 
+}
+@media(max-width:480px){
+    .table-search-field{ min-width: 100% !important; max-width: 100%; }
+}
+
+// MAT MODAL CSS START
+// ==============================
+.mat-mdc-dialog-container{
+    .mdc-dialog__surface{ border-radius: 10px !important;}
+    .mat-mdc-dialog-title.mdc-dialog__title{ padding: 0 24px 20px 24px; border-bottom: 1px solid #D8D8D8; font:500 20px/22px "Inter", sans-serif !important; color: $text-dark; letter-spacing: inherit !important; }
+    .mat-mdc-dialog-content{ padding: 24px !important;
+        &.add-hotel-dialog{ padding: 0 0 24px !important; }
+        .mat-mdc-dialog-content-inner{ padding: 24px !important;}
+    }
+    .mdc-dialog__actions{ padding:16px 24px !important; border-top: 1px solid #D8D8D8; }
+    .info-txt{ color: $text-dark; font-size: 13px; margin-bottom: 24px; letter-spacing: 0px !important;
+        span{ font-weight: 700; font-size: 14px; display: block; }
+    }
+    .mat-mdc-form-field{ margin-bottom: 5px; }
+    .badge-number{ position: absolute; left: -28px;
+        img{ margin-right: 20px;}
+        + span.text-success{ padding-left: 15px; }
+    }
+    .mat-mdc-tab-header{ border-bottom: 1px solid #D8D8D8; 
+        .mat-mdc-tab{ border-right: 1px solid #D8D8D8;  
+            &:last-child{ border-right: inherit; }
+            .mat-badge-content{ font-size: 16px; font-weight: 500; }
+        }
+    }
+}
+.cdk-overlay-dark-backdrop{ background: #31313780 }
+
+
+// MAT TAB CSS START
+// ==============================
+.mat-mdc-tab.mdc-tab--active .mdc-tab__ripple::before, .mat-mdc-tab.mdc-tab--active .mat-ripple-element{ background-color: #F8FBFF !important; opacity: 1 !important;}
+.mat-mdc-tab{ font-size: 14px !important; font-family: "Inter", sans-serif !important; letter-spacing: 0px !important; } 
+.mat-badge-success {
+    --mat-badge-background-color: #0DB87A;
+    --mat-badge-text-color: white;
+}
+
+.mat-custom-menu{ box-shadow: 0px 4px 6px 0px #0000000D !important; border: 1px solid #E6ECF3; border-radius: 18px !important; overflow: inherit !important;
+    &:before{ position: absolute; top: -6px; right: 10px; content: ''; z-index: 9; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid #fff;}
+    button{ min-height: 38px; font-size: 14px !important;  
+        span{ font-family: "Inter", sans-serif !important; font-weight: 600; letter-spacing: 0px !important }
+    }
+}

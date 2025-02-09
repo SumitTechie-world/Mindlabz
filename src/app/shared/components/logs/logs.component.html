@@ -1,0 +1,30 @@
+<div class="heading">
+    <h2>Log</h2>
+</div>
+<div class="body-content">
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                Request: Shell / cURL
+            </mat-panel-title> 
+          </mat-expansion-panel-header>
+          <!-- <img src="/assets/images/log-console.png" alt="" class="img-fluid">  -->
+           <div class="content">
+            {{logsEntity?.req}}
+           </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Response 
+              </mat-panel-title> 
+            </mat-expansion-panel-header>
+            <!-- <img src="/assets/images/ResponseExample-img.png" alt="" class="img-fluid">  -->
+             <div class="content">
+                {{logsEntity?.res}}
+             </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

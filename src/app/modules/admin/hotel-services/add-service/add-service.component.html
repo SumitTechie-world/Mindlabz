@@ -1,0 +1,90 @@
+<h2 mat-dialog-title>
+    {{this.data ? 'Edit Service' : 'Add New Service'}}
+    <button mat-icon-button mat-dialog-close class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+  
+  <mat-dialog-content>
+    <div class="row">
+      <!-- Hotel Name -->
+      <div class=" col-md-6">
+        <p class="info-txt">
+          <strong>Hotel Name:</strong>
+          <span>{{hotelDetails?.hotelName}}</span>
+        </p>
+      </div>
+      <!-- Hotel ID -->
+      <div class=" col-md-6">
+        <p class="info-txt">
+          <strong>Hotel ID:</strong>
+          <span>{{hotelDetails?.hotelId}}</span>
+        </p>
+      </div>
+    </div>
+  
+    <form [formGroup]="addServiceForm">
+      <!-- Status and Select Vendor -->
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <mat-label class="d-block">Status</mat-label>
+          <mat-form-field class="example-full-width">
+            <mat-select formControlName="status">
+              <mat-option value="active">Active</mat-option>
+              <mat-option value="inactive">Inactive</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6">
+          <mat-label class="d-block">Select Vendor</mat-label>
+          <mat-form-field class="example-full-width">
+            <mat-select formControlName="vendor" (selectionChange)="onVendorChange($event)">
+              <mat-option value="{{mVendor?.type}}" *ngFor="let mVendor of vendor_list">
+                {{mVendor?.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <!-- Consumer Key and Consumer Secret -->
+      <div class="row" *ngIf="selectedVendorEntity?.serviceType === '1'">
+        <div class="col-12 col-md-6">
+          <mat-label class="d-block">Consumer Key</mat-label>
+          <mat-form-field class="example-full-width">
+            <input type="text" matInput placeholder="Enter consumer ID" formControlName="consumerId">
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6">
+          <mat-label class="d-block">Consumer Secret</mat-label>
+          <mat-form-field class="example-full-width">
+            <input type="text" matInput placeholder="Enter consumer secret" formControlName="consumerSecret">
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <!-- Counter ID or Web Link -->
+      <div class="row">
+        <div class="col-12 col-md-6" *ngIf="selectedVendorEntity?.serviceType === '1'">
+          <mat-label class="d-block">Counter ID</mat-label>
+          <mat-form-field class="example-full-width">
+            <input type="text" matInput placeholder="Enter counter ID" formControlName="counterId">
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6" *ngIf="selectedVendorEntity?.serviceType === '2'">
+          <mat-label class="d-block">Web Link</mat-label>
+          <mat-form-field class="example-full-width">
+            <input type="text" matInput placeholder="Enter web link" formControlName="webLink">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-flat-button mat-dialog-close color="warn">Close</button>
+    <button (click)="createService()" routerLinkActive="router-link-active" color="primary" mat-flat-button>
+      {{this.data ? 'Edit Service' : 'Add Service'}}
+    </button>
+  </mat-dialog-actions>
+  

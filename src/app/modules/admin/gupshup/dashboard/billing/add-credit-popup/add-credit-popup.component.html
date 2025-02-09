@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Add Credit
+
+  <button 
+    mat-icon-button 
+    mat-dialog-close 
+    class="close-btn" 
+    style="position: absolute; top: 50%; right: 0; transform: translateY(-50%);"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+<mat-dialog-content>
+    <form [formGroup]="addCreditForm">
+        <div class="row">
+            <div class="col-12">
+                <mat-label class="d-block">Credit Amount</mat-label>
+                <mat-form-field class="example-full-width"> 
+                    <input type="number" matInput placeholder="Ex: 100" formControlName="creditAmount">
+                </mat-form-field>
+            </div> 
+        </div> 
+
+        <div class="row">
+            <div class="col-12">
+                <mat-label class="d-block">Description</mat-label>
+                <mat-form-field class="example-full-width"> 
+                    <input type="textarea" matInput placeholder="Ex: Description" formControlName="description">
+                </mat-form-field>
+            </div>
+        </div> 
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="addCredit()" routerLinkActive="router-link-active"  color="primary" mat-flat-button mat-dialog-close>Add Credit(Strip)</button>
+  <button (click)="addCreditRozopay()" routerLinkActive="router-link-active"  color="primary" mat-flat-button mat-dialog-close>Add Credit(RozoPay)</button>
+</mat-dialog-actions>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>

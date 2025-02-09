@@ -1,0 +1,23 @@
+.billing-wrapper{ background-color:#fff; padding: 24px 8px 0px; border-top: 1px solid #D2DAE3;
+    .mat-btn-view-more{ height: 26px; }
+}
+.available-bal-wrapper{ min-height: 160px; border: 1px solid #E6ECF3; padding: 20px; background: url('/assets/images/credit-card.svg') no-repeat 96% center #FBFAFF; border-radius: 12px;
+    p{ font-size: 13px;}
+    p.balance-credits{ font-family: Inter; font-size: 24px; font-weight: 400; line-height: 29.05px; color: #ED5A5A;
+        .error-icon{ width: 20px; height: 20px; display: inline-block; background: url('/assets/images/error-icon.svg') no-repeat 0 0; }
+    }
+    p.balance-credits-fine{ font-family: Inter; font-size: 24px; font-weight: 400; line-height: 29.05px; color: #0DB87A !important;
+        .error-icon{ width: 20px; height: 20px; display: inline-block; background: url('/assets/images/error-icon.svg') no-repeat 0 0; }
+    }
+    button.mdc-button{ height: 40px; }
+}
+.msg-box-wrapper{ border: 1px solid #E6ECF3; padding:38px 24px 24px; margin-bottom: 15px; border-radius: 12px; background: url('/assets/images/msg-icon.svg') no-repeat 92% 38px #fff; }
+.conversations-box-wrapper{ border: 1px solid #E6ECF3; padding:38px 24px 24px;  border-radius: 12px; background: url('/assets/images/conversations-icon.svg') no-repeat 92% 38px #fff; }
+@media(max-width:991px){
+    .available-bal-wrapper{ margin-bottom: 30px;}
+    .msg-box-wrapper{ margin-top:15px; margin-bottom: 0px;}
+    .conversations-box-wrapper{ margin-top:15px; margin-bottom: 15px;}
+}
+@media(max-width:480px){
+    .available-bal-wrapper{ background-size: 32px; }
+}

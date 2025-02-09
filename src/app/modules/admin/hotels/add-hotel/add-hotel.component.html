@@ -1,0 +1,143 @@
+<h2 mat-dialog-title>
+    Hotel Details
+    <button mat-icon-button mat-dialog-close class="close-btn" style="position: absolute; top: 8px; right: 8px;">
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+  
+  <mat-dialog-content class="add-hotel-dialog">
+    <mat-tab-group color="primary">
+      <form [formGroup]="newHotelForm">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="badge-number"><img src="/assets/images/success-arrow.svg" alt=""></span>
+            <span class="text-success">Hotel Information</span>
+          </ng-template>
+          <div class="mat-mdc-dialog-content-inner">
+            <div formGroupName="hotelInfo">
+              <div class="row">
+                <div class="col-12">
+                  <mat-label class="d-block">Hotel Name</mat-label>
+                  <mat-form-field class="example-full-width">
+                    <input
+                      type="text"
+                      matInput
+                      placeholder="AR Suites-Jewels Royale (Unit of Ahuja Residency Pvt. Ltd.)"
+                      formControlName="hotelName"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <mat-label class="d-block">Hotel ID</mat-label>
+                  <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="27143" formControlName="hotelId" />
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                  <mat-label class="d-block">Contact Person Name</mat-label>
+                  <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Alex Smith" formControlName="contactName" />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <mat-label class="d-block">Email</mat-label>
+                  <mat-form-field class="example-full-width">
+                    <input type="email" matInput placeholder="alex1234@gmail.com" formControlName="email" />
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                  <mat-label class="d-block">Mobile No</mat-label>
+                  <mat-form-field class="example-full-width">
+                    <span matTextPrefix>+91 &nbsp;</span>
+                    <input type="tel" matInput placeholder="9831156980" formControlName="mobileNo" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <mat-label class="d-block">Currency</mat-label>
+                  <mat-form-field class="example-full-width">
+                    <mat-select formControlName="currency" >
+                      <mat-option value="rupees">₹ - Rupees</mat-option>
+                      <mat-option value="dollar">$ - Dollar</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                  <mat-label class="d-block">Currency Amount</mat-label>
+                  <mat-form-field class="example-full-width">
+                    <input type="number" matInput placeholder="Enter Amount" formControlName="currencyValue" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          
+        </mat-tab>
+  
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="badge-number" matBadge="2" matBadgeSize="large" matBadgePosition="before" matBadgeColor="primary"></span>
+            Add Master Data
+          </ng-template>
+          <div class="mat-mdc-dialog-content-inner" formGroupName="masterData">
+            <div class="row">
+              <div class="col-12">
+                <mat-label class="d-block">Room Master</mat-label>
+                <input
+                  type="file"
+                  formControlName="roomMaster"
+                  (change)="validateFile($event, 'room')"
+                  accept=".json"
+                />
+              </div>
+              <div class="col-12 mt-8">
+                <mat-label class="d-block">Guest Master</mat-label>
+                <input
+                  type="file"
+                  formControlName="guestMaster"
+                  (change)="validateFile($event, 'guest')"
+                  accept=".json"
+                />
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+       
+      </form>
+    </mat-tab-group>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <ng-container *ngIf="!this.status">
+      <button
+        color="primary"
+        mat-flat-button
+        mat-dialog-close
+        (click)="submitForm()"
+        [disabled]="newHotelForm.get('hotelInfo')!.invalid"
+      >
+        Next
+      </button>
+    </ng-container>
+    <ng-container *ngIf="this.status">
+      <button
+        color="primary"
+        mat-flat-button
+        mat-dialog-close
+        (click)="uploadDocument()"
+        [disabled]="newHotelForm.get('hotelInfo')!.invalid"
+      >
+        Update
+      </button>
+    </ng-container>
+  </mat-dialog-actions>
+  

@@ -1,0 +1,41 @@
+<div class="main-container">
+  <div class="container-fluid">
+    <div class="title-section">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <h3 class="link" [routerLink]="['/admin/hotel-services']" routerLinkActive="router-link-active">
+            Console
+          </h3>
+        </div>
+        <div class="col-12 col-md-8" style="text-align-last: right;">
+          <div class="float-end">
+            <h5>
+              {{hotelDetails?.hotelName}}
+            </h5>
+            <p>Hotel ID: {{hotelDetails?.hotelId}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mat-table-wrapper">
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Billing">
+          <app-billing></app-billing>
+        </mat-tab>
+        <mat-tab label="Verified Templates">
+          <app-gupshup-templates></app-gupshup-templates>
+        </mat-tab>
+
+        <mat-tab label="Subscribed Templates">
+          <app-verified-templates></app-verified-templates>
+        </mat-tab>
+        <mat-tab label="Events">
+          <app-events></app-events>
+        </mat-tab>
+        <mat-tab label="Logs">
+          <!-- <app-list></app-list> -->
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

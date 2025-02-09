@@ -1,0 +1,81 @@
+<div class="mat-table-wrapper">
+  <div class="mat-search-wrapper mat-search-wrapper-with-btn" style="padding: 10px 0;">
+    <div class="row ">
+      <!-- Search Field -->
+      <div class="col-10 text-end" style="padding-right: 0;">
+        <mat-form-field class="table-search-field" style="width: 100%; margin: 0;">
+          <input type="text" matInput placeholder="Search">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <!-- Subscribe New Template Button -->
+      <div class="col-2 text-end" style="padding-left: 0;">
+        <button mat-flat-button color="primary" (click)="openDialog()">
+          Subscribe New Template
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mar-table-responsive">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Template Column -->
+      <ng-container matColumnDef="template">
+        <th width="35%" mat-header-cell *matHeaderCellDef> Template </th>
+        <td mat-cell class="cursor-pointer" *matCellDef="let element">
+          <strong class="pb-2 d-block">{{ element?.template }}</strong>
+          <span class="pb-2 d-block"> {{ element?.category }}</span>
+          <br>
+          <span class="pb-2 d-block">Gupshup temp ID: {{ element?.templateId }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th width="20%" mat-header-cell *matHeaderCellDef> Hotel Id </th>
+        <td mat-cell *matCellDef="let element"> {{ element.description }} </td>
+      </ng-container>
+
+      <!-- Event Column -->
+      <ng-container matColumnDef="eventId">
+        <th width="20%" mat-header-cell *matHeaderCellDef> Event </th>
+        <td mat-cell *matCellDef="let element"> {{ eventList(element.eventId) }} </td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="text-success">{{ element.status }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{ element.date }} </td>
+      </ng-container>
+
+      <!-- Table Header and Rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
+    </table>
+  </div>
+
+  <!-- Pagination (Commented Out) -->
+  <!--
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+  -->
+</div>

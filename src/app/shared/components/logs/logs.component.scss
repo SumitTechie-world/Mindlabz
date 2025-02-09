@@ -1,0 +1,16 @@
+.heading{ padding: 20px 32px; border-bottom: 1px solid #CAD5E0; display: flex; justify-content: space-between;
+    h2{ font:500 20px/22px "Inter", sans-serif; padding: 0px; }
+}
+.body-content{ 
+    padding: 20px 32px; background: #fff;
+}
+.mat-expansion-panel{ margin-bottom: 33px; border-radius: 8px !important;}
+.mat-expansion-panel-header{ background-color: #DAE3ED; height: 46px !important; color: #484D53; font-size: 16px; font-family: "Inter", sans-serif !important; font-weight: 600; }
+.mat-expansion-panel:not([class*=mat-elevation-z]){ box-shadow: inherit; border: 1px solid #CAD5E0; background: #E8ECF3;}
+@media(max-width:600px){
+    .mat-expansion-panel-header{ font-size: 14px; }
+}
+
+.content{
+    overflow-x: auto;
+}

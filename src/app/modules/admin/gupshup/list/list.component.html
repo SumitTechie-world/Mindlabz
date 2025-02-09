@@ -1,0 +1,131 @@
+<div class="main-container">
+    <div class="container-fluid">
+        <div class="title-section">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <h3 class="link" [routerLink]="['/admin/hotel-services']" routerLinkActive="router-link-active" >
+                        <!-- Gupshup Log -->
+                        Log
+                    </h3> 
+                </div>
+                <div class="col-12 col-md-8" style="text-align-last: right;">
+                    <div class="float-end">
+                        <h5>
+                            {{hotelDetails?.hotelName}}
+                        </h5>
+                        <p>Hotel ID: {{hotelDetails?.hotelId}}</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mat-table-wrapper">
+          <div class="mat-search-wrapper">
+              <div class="row align-items-center">
+                  <!-- Filter by Events -->
+                  <div class="col-md-3">
+                      <mat-form-field appearance="outline" class="filter-field w-100">
+                          <mat-label>Filter by Events</mat-label>
+                          <mat-select [(value)]="filters.events" (selectionChange)="applyFilter()">
+                              <mat-option *ngFor="let event of uniqueEvents" [value]="event">{{ event }}</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </div>
+      
+                  <!-- Filter by Status -->
+                  <div class="col-md-3">
+                      <mat-form-field appearance="outline" class="filter-field w-100">
+                          <mat-label>Filter by Status</mat-label>
+                          <mat-select [(value)]="filters.status" (selectionChange)="applyFilter()">
+                              <mat-option value="">All</mat-option>
+                              <mat-option value="Success">Success</mat-option>
+                              <mat-option value="Failure">Failure</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </div>
+      
+                  <!-- Filter by Date -->
+                  <div class="col-md-3">
+                      <mat-form-field appearance="outline" class="filter-field w-100">
+                          <mat-label>Filter by Date</mat-label>
+                          <input matInput [matDatepicker]="picker" [(ngModel)]="filters.date" (dateChange)="applyFilter()" placeholder="Choose a date">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                  </div>
+      
+                  <!-- Search Field -->
+                  <div class="col-md-3">
+                      <mat-form-field class="table-search-field w-100">
+                          <input type="text" matInput placeholder="Search" [(ngModel)]="filters.searchText" (input)="applyFilter()">
+                          <mat-icon matSuffix>search</mat-icon>
+                      </mat-form-field>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="mar-table-responsive">
+              <table mat-table [dataSource]="dataSource">
+                  <!-- Registration Number Column -->
+                  <ng-container matColumnDef="registrationNumber">
+                      <th mat-header-cell *matHeaderCellDef> Registration Number </th>
+                      <td mat-cell class="cursor-pointer" *matCellDef="let element" [routerLink]="['/admin/gupshup/gupshup-dashboard']" routerLinkActive="router-link-active">{{element.regno}}</td>
+                  </ng-container>
+      
+                  <!-- Events Column -->
+                  <ng-container matColumnDef="events">
+                      <th mat-header-cell *matHeaderCellDef> Events </th>
+                      <td mat-cell *matCellDef="let element">{{element.events}}</td>
+                  </ng-container>
+      
+                  <!-- Status Column -->
+                  <ng-container matColumnDef="status">
+                      <th mat-header-cell *matHeaderCellDef> Status </th>
+                      <td mat-cell *matCellDef="let element">
+                          <span [ngClass]="element?.status === 'Failure' ? 'text-danger' : 'text-success'">{{element.status}}</span>
+                      </td>
+                  </ng-container>
+      
+                  <!-- Date Column -->
+                  <ng-container matColumnDef="date">
+                      <th mat-header-cell *matHeaderCellDef> Date </th>
+                      <td mat-cell *matCellDef="let element">{{element.date}}</td>
+                  </ng-container>
+      
+                  <!-- Action Column -->
+                  <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef> Action </th>
+                      <td mat-cell class="td-link" *matCellDef="let element" (click)="viewLogsAction(element)">
+                          <span class="cursor-pointer text-decoration-underline">{{element.action}}</span>
+                      </td>
+                  </ng-container>
+      
+                  <!-- View Column -->
+                  <ng-container matColumnDef="view">
+                      <th mat-header-cell *matHeaderCellDef> View </th>
+                      <td mat-cell *matCellDef="let element">
+                          <ng-container>
+                              <mat-icon [matMenuTriggerFor]="actionMenu">list</mat-icon>
+                          </ng-container>
+                          <mat-menu #actionMenu="matMenu" class="dotMenu monthMenu" xPosition="before">
+                              <button mat-menu-item type="button" (click)="regenerate(element)" class="bg-transparent border-none position-relative">
+                                  Regenerate
+                              </button>
+                          </mat-menu>
+                      </td>
+                  </ng-container>
+      
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;">
+                  </tr>
+              </table>
+          </div>
+      
+          <mat-paginator [length]="totalDAta" [pageSize]="pagination.limit" [pageSizeOptions]="[5, 10, 25, 100]" (page)="paginationEve($event)" aria-label="Select page"></mat-paginator>
+      </div>
+      
+    </div>
+</div>
+<div class="view-log-console-wrapper" [ngClass]="viewLogConsoleClass? 'show': ''">
+    <mat-icon class="view-log-close" aria-hidden="false" aria-label="close" fontIcon="close" (click)="viewLogConsoleClass = !viewLogConsoleClass"></mat-icon>
+    <app-logs [logsEntity]="logsEntity"></app-logs>
+</div>

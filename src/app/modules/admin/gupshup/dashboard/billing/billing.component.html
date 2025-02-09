@@ -1,0 +1,86 @@
+<div class="billing-wrapper" style="display: flex; flex-wrap: nowrap; gap: 20px; align-items: stretch;">
+  <!-- Left Section: Balance and Usage -->
+  <div class="left-section" style="flex: 1 1 50%; max-width: 50%; min-width: 300px; box-sizing: border-box; display: flex; flex-direction: column;">
+    <div class="row">
+      <div class="col-12">
+        <div class="available-bal-wrapper" style="margin-bottom: 20px;">
+          <p>Available Balance
+            <span mat-button [matMenuTriggerFor]="infoList" class="cursor-pointer ml-2">
+              <img src="/assets/images/info-icon.svg" alt="Info">
+            </span>
+          </p>
+          <mat-menu #infoList="matMenu" class="info-menu-wrapper">
+            <div class="info-wrapper">
+              <h4>Available Balance</h4>
+            </div>
+          </mat-menu>
+          <ng-container *ngIf="infotility?.totalBalance">
+            <ng-container *ngIf="infotility?.totalBalance > 0">
+              <p class="balance-credits-fine"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"/>
+              </svg>
+              {{ infotility?.totalBalance / 100 }}</p>
+            </ng-container>
+            <ng-container *ngIf="infotility?.totalBalance <= 0">
+              <p class="balance-credits"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"/>
+              </svg> {{ infotility?.totalBalance / 100 }}</p>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="!infotility?.totalBalance">
+            <p class="balance-credits">NA</p>
+          </ng-container>
+          <ng-container *ngIf="login_object?.type === 1">
+            <button mat-flat-button color="primary" (click)="openDialog()">Add Credits</button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="pb-0">Usage</h5>
+          <a class="mat-btn-view-more" mat-button color="primary" (click)="openSettingPopup()">Settings</a>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="msg-box-wrapper">
+              <h4>{{ infotility?.totalMessage }}</h4>
+              <p>Total Messages
+                <span mat-button [matMenuTriggerFor]="totalMsg" class="cursor-pointer ml-2">
+                  <img src="/assets/images/info-icon.svg" alt="Info">
+                </span>
+              </p>
+              <mat-menu #totalMsg="matMenu" class="info-menu-wrapper">
+                <div class="info-wrapper">
+                  <h4>Total Messages</h4>
+                </div>
+              </mat-menu>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="conversations-box-wrapper">
+              <h4>{{ infotility?.totalConversation }}</h4>
+              <p>Paid Conversations
+                <span mat-button [matMenuTriggerFor]="paidMsg" class="cursor-pointer ml-2">
+                  <img src="/assets/images/info-icon.svg" alt="Info">
+                </span>
+              </p>
+              <mat-menu #paidMsg="matMenu" class="info-menu-wrapper">
+                <div class="info-wrapper">
+                  <h4>Paid Conversations</h4>
+                </div>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Section: Billing History -->
+  <div class="right-section" style="flex: 1 1 50%; max-width: 50%; min-width: 300px; box-sizing: border-box; overflow-y: auto; display: flex; flex-direction: column;">
+    <app-billing-history style="flex-grow: 1;"></app-billing-history>
+  </div>
+</div>

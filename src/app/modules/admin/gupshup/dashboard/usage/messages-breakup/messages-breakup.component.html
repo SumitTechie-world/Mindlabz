@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-6">
+            <div class="chart-box-wrapper">
+                <h5>Messages Timeline</h5>
+
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-6">
+            <div class="chart-box-wrapper">
+                <h5>Conversations</h5>
+            </div>
+        </div>
+    </div>
+
+    <h5>Messages Breakup</h5>
+
+
+    <div class="mat-mdc-table-wrapper">
+        <div class="mar-table-responsive">
+            <table mat-table [dataSource]="dataSource">
+            
+                <!-- Date Column -->
+                <ng-container matColumnDef="messagesDate">
+                <th mat-header-cell *matHeaderCellDef> Date</th>
+                <td mat-cell class="cursor-pointer" *matCellDef="let element"> 
+                    {{element.messagesDate}}
+                </td>
+                </ng-container>
+                
+                <!-- Template Sent Column -->
+                <ng-container matColumnDef="templateSent">
+                <th class="text-end" mat-header-cell *matHeaderCellDef> Template Sent </th>
+                <td class="text-end" mat-cell *matCellDef="let element"> {{element.templateSent}} </td>
+                </ng-container>
+            
+                <!-- Template media Column -->
+                <ng-container matColumnDef="templateMedia">
+                <th class="text-end" mat-header-cell *matHeaderCellDef> Template media </th>
+                <td class="text-end" mat-cell *matCellDef="let element">{{element.templateMedia}}</td>
+                </ng-container>
+        
+                <!-- Session Sent Column -->
+                <ng-container matColumnDef="sessionSent">
+                    <th class="text-end" mat-header-cell *matHeaderCellDef> Session Sent </th>
+                    <td class="text-end" mat-cell *matCellDef="let element"> {{element.sessionSent}} </td>
+                </ng-container>
+
+                <!-- Session Received Column -->
+                <ng-container matColumnDef="sessionReceived">
+                    <th class="text-end"  mat-header-cell *matHeaderCellDef> Session Received</th>
+                    <td class="text-end" mat-cell *matCellDef="let element"> {{element.sessionReceived}}  
+                    </td>
+                </ng-container>
+
+                <!-- Session Media Column -->
+                <ng-container matColumnDef="sessionMedia">
+                    <th class="text-end" mat-header-cell *matHeaderCellDef>Session Media</th>
+                    <td class="text-end" mat-cell *matCellDef="let element"> {{element.sessionMedia}} 
+                    </td>
+                </ng-container>
+
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row
+                    (click)="clickedRows.add(row)"
+                    [class.demo-row-is-clicked]="clickedRows.has(row)"
+                    *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+            </table>
+        </div>    
+        <mat-paginator [length]="100"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page">
+        </mat-paginator>
+    </div>
+
+
+</div>
